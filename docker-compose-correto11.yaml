@@ -5,12 +5,12 @@ networks:
         driver: bridge
 
 services:
-  openjdk-8:
-    image: openjdk8-img
-    container_name: openjdk8
+  correto-11:
+    image: correto11-img
+    container_name: correto11
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.correto
     working_dir: /opt/working
     volumes:
       - .:/opt/working
