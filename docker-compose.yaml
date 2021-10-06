@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  correto-11-jdk:
+    image: correto-jdk
+    container_name: java-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /opt/working
+    volumes:
+      - .:/opt/working
+    command: tail -F anything
