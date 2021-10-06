@@ -1,5 +1,9 @@
 version: '3.7'
 
+networks:
+    nifi_network:
+        driver: bridge
+
 services:
   correto-11-jdk:
     image: correto-jdk
@@ -11,3 +15,14 @@ services:
     volumes:
       - .:/opt/working
     command: tail -F anything
+
+  nifi:
+    build:
+      context: ./nifi
+      dockerfile: Dockerfile
+    volumes:
+      - ./nifi/nifi-local-data/conf:/opt/nifi/nifi-current/conf
+    networks:
+      - nifi_network
+    ports:
+      - 8080:8080
