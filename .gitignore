@@ -1,5 +1,3 @@
-*target*
-
 # eclipse specific git ignore
 *.pydevproject
 .project
@@ -21,3 +19,6 @@ local.properties
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+
+# NiFi archive file
+nifi/nifi-local-data/conf/archive
