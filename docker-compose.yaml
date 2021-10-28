@@ -1,28 +1,17 @@
-version: '3.7'
+version: "3.7"
 
 networks:
     nifi_network:
         driver: bridge
 
 services:
-  openjdk-8:
-    image: openjdk8-img
-    container_name: openjdk8
-    build:
-      context: .
-      dockerfile: Dockerfile
-    working_dir: /opt/working
-    volumes:
-      - .:/opt/working
-    command: tail -F anything
-
-  nifi:
-    build:
-      context: .
-      dockerfile: Dockerfile.nifi
-    volumes:
-      - ./nifi/nifi-local-data/conf:/opt/nifi/nifi-current/conf
-    networks:
-      - nifi_network
-    ports:
-      - 8080:8080
+    nifi:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./nifi/nifi-local-data/conf:/opt/nifi/nifi-current/conf
+        networks:
+            - nifi_network
+        ports:
+            - 8080:8080
