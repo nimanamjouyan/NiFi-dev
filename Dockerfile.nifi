@@ -1,3 +1,8 @@
-FROM apache/nifi:1.11.4
-COPY /custom-proc/nifi-mycustomproc-nar/target/*.nar /opt/nifi/nifi-1.11.4/lib/
-EXPOSE 8080
+ARG NIFI_VERSION=1.11.4
+ARG PORT=8080
+
+
+FROM apache/nifi:$NIFI_VERSION
+# COPY /custom-proc/nifi-mycustomproc-nar/target/*.nar /opt/nifi/nifi-NIFI_VERSION/lib/
+# COPY /custom-proc/nifi-mycustomproc-nar/pom.xml /custom-proc/nifi-mycustomproc-nar/target/*.nar /opt/nifi/nifi-$NIFI_VERSION/lib/
+EXPOSE $PORT
