@@ -9,7 +9,7 @@ services:
     container_name: openjdk8
     build:
       context: .
-      dockerfile: .devcontainer/Dockerfile
+      dockerfile: Dockerfile
     working_dir: /opt/working
     volumes:
       - .:/opt/working
@@ -19,7 +19,7 @@ services:
     container_name: nifi
     build:
       context: .
-      dockerfile: .devcontainer/Dockerfile.nifi
+      dockerfile: Dockerfile.nifi
     volumes:
       - ./nifi/nifi-local-data/conf:/opt/nifi/nifi-current/conf
     networks:

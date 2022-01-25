@@ -13,7 +13,6 @@ ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
-
 # Configure apt
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
@@ -29,6 +28,8 @@ RUN apt-get update \
     #
     # Verify git, needed tools installed
     && apt-get -y install git openssh-client less iproute2 procps curl lsb-release
+# && code --extensions-dir /root/.vscode-server/extensions --install-extension vscjava.vscode-java-pack
+# && apt purge codeserverdeps codeserverdeps
 
 #-------------------Uncomment the following steps to install Maven CLI Tools----------------------------------
 ARG MAVEN_VERSION=3.6.3
@@ -40,7 +41,8 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
     && tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1 \
     && rm -f /tmp/apache-maven.tar.gz \
     && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
-COPY maven-settings.xml /usr/share/maven/ref/
+COPY /vscode_settings/maven-settings.xml /usr/share/maven/ref/
+COPY /vscode_settings/settings.json /root/.vscode-server/data/Machine/  
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG /root/.m2
 #-------------------------------------------------------------------------------------------------------------
