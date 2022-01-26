@@ -27,7 +27,9 @@ RUN apt-get update \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
     #
     # Verify git, needed tools installed
-    && apt-get -y install git openssh-client less iproute2 procps curl lsb-release
+    && apt-get -y install git openssh-client less iproute2 procps curl lsb-release \
+    && curl -fsSL https://code-server.dev/install.sh | sh
+# && code-server --extensions-dir /root/.vscode-server/extensions --install-extension vscjava.vscode-java-pack
 # && code --extensions-dir /root/.vscode-server/extensions --install-extension vscjava.vscode-java-pack
 # && apt purge codeserverdeps codeserverdeps
 
@@ -65,6 +67,3 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
-
-# Allow for a consistant java home location for settings - image is changing over time
-RUN if [ ! -d "/docker-java-home" ]; then ln -s "${JAVA_HOME}" /docker-java-home; fi

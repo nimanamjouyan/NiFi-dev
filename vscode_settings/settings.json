@@ -1,4 +1,10 @@
 {
 "terminal.integrated.shell.linux": "/bin/bash",
-"java.home": "/docker-java-home"
+"java.configuration.runtimes": [
+    {
+      "name": "JavaSE-1.8",
+      "path": "/usr/local/openjdk-8",
+      "default": true
+    }
+  ]
 }

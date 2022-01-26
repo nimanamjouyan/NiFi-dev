@@ -13,7 +13,8 @@ services:
     working_dir: /opt/working
     volumes:
       - .:/opt/working
-    command: tail -F anything
+    # command: tail -F anything
+    command: bash -c "code-server --extensions-dir /root/.vscode-server/extensions --install-extension vscjava.vscode-java-pack && tail -F anything"
 
   nifi:
     container_name: nifi
