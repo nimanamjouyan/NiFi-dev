@@ -1,10 +1,15 @@
 {
-"terminal.integrated.shell.linux": "/bin/bash",
-"java.configuration.runtimes": [
+  "terminal.integrated.shell.linux": "/bin/bash",
+  "java.jdt.ls.java.home": "/opt/java/openjdk",
+  "java.configuration.runtimes": [
     {
       "name": "JavaSE-1.8",
       "path": "/usr/local/openjdk-8",
       "default": true
+    },
+    {
+      "name": "JavaSE-11",
+      "path": "/opt/java/openjdk"
     }
   ]
 }

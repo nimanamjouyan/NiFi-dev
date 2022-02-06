@@ -5,8 +5,8 @@ networks:
     driver: bridge
 
 services:
-  openjdk-8:
-    container_name: openjdk8
+  myopenjdk-8:
+    container_name: myopenjdk8
     build:
       context: .
       dockerfile: Dockerfile
