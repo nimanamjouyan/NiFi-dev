@@ -16,7 +16,7 @@ ARG USER_GID=$USER_UID
 # Configure apt
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends apt-utils dialog 2>&1 \
+    && apt-get -y install --no-install-recommends apt-utils gcc dialog 2>&1 \
     #
     # Create a non-root user to use if preferred - see https://aka.ms/vscode-remote/containers/non-root-user.
     && groupadd --gid $USER_GID $USERNAME \
@@ -90,7 +90,7 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
     && tar -xzf /tmp/apache-maven.tar.gz -C /usr/share/maven --strip-components=1 \
     && rm -f /tmp/apache-maven.tar.gz \
     && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
-COPY /vscode_settings/maven-settings.xml /usr/share/maven/ref/
+COPY /vscode_settings/settings.xml /usr/share/maven/conf/
 COPY /vscode_settings/settings.json /root/.vscode-server/data/Machine/  
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG /root/.m2
